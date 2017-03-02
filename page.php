@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Gaston_County_Theme
+ * @package PDS_Theme
  */
 
 get_header(); ?>

@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package Gaston_County_Theme
+ * @package PDS_Theme
  */
 
 get_header(); ?>
@@ -12,7 +12,7 @@ get_header(); ?>
 	<?php if ( have_posts() ) : ?>
 
 	<section class="sub-page__heading">
-		<h1><?php printf( esc_html__( 'Search Results for: %s', 'gastoncounty' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+		<h1><?php printf( esc_html__( 'Search Results for: %s', 'pds' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 	</section>
 
     <section class="news-categories">
@@ -69,7 +69,7 @@ get_header(); ?>
   		<?php while ( have_posts() ) : the_post(); ?>
     	<div class="event">
     		<a href="<?php the_permalink(); ?>"><div class="event__img"><?php if ( has_post_thumbnail() ):
-    				the_post_thumbnail( 'gastoncounty-featured-image' );
+    				the_post_thumbnail( 'pds-featured-image' );
     			else: ?>
     				<div style="height:40px;"></div>
     			<?php endif; ?></div></a>

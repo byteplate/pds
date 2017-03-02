@@ -1,13 +1,13 @@
 <?php
 /**
- * Gaston County Theme functions and definitions.
+ * PDS Theme functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package Gaston_County_Theme
+ * @package PDS_Theme
  */
 
-if ( ! function_exists( 'gastoncounty_setup' ) ) :
+if ( ! function_exists( 'pds_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -15,14 +15,14 @@ if ( ! function_exists( 'gastoncounty_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function gastoncounty_setup() {
+function pds_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
 	 * If you're building a theme based on components, use a find and replace
-	 * to change 'gastoncounty' to the name of your theme in all the template files.
+	 * to change 'pds' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'gastoncounty', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'pds', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -42,11 +42,11 @@ function gastoncounty_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	add_image_size( 'gastoncounty-featured-image', 640, 9999 );
+	add_image_size( 'pds-featured-image', 640, 9999 );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'menu-1' => esc_html__( 'Top', 'gastoncounty' ),
+		'menu-1' => esc_html__( 'Top', 'pds' ),
 		) );
 
 	/**
@@ -72,13 +72,13 @@ function gastoncounty_setup() {
 	) );
 
 	// Set up the WordPress core custom background feature.
-	/*add_theme_support( 'custom-background', apply_filters( 'gastoncounty_custom_background_args', array(
+	/*add_theme_support( 'custom-background', apply_filters( 'pds_custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );*/
 }
 endif;
-add_action( 'after_setup_theme', 'gastoncounty_setup' );
+add_action( 'after_setup_theme', 'pds_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -87,17 +87,17 @@ add_action( 'after_setup_theme', 'gastoncounty_setup' );
  *
  * @global int $content_width
  */
-function gastoncounty_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'gastoncounty_content_width', 640 );
+function pds_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'pds_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'gastoncounty_content_width', 0 );
+add_action( 'after_setup_theme', 'pds_content_width', 0 );
 
 /**
  * Return early if Custom Logos are not available.
  *
  * @todo Remove after WP 4.7
  */
-function gastoncounty_the_custom_logo() {
+function pds_the_custom_logo() {
 	if ( ! function_exists( 'the_custom_logo' ) ) {
 		return;
 	} else {
@@ -110,9 +110,9 @@ function gastoncounty_the_custom_logo() {
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function gastoncounty_widgets_init() {
+function pds_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'gastoncounty' ),
+		'name'          => esc_html__( 'Sidebar', 'pds' ),
 		'id'            => 'sidebar-1',
 		'description'   => '',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -121,15 +121,15 @@ function gastoncounty_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 }
-add_action( 'widgets_init', 'gastoncounty_widgets_init' );
+add_action( 'widgets_init', 'pds_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function gastoncounty_scripts() {
-	wp_enqueue_style( 'gastoncounty-fluidbox', get_template_directory_uri() . '/css/fluidbox.min.css',false,'1.0','all');
-	wp_enqueue_style( 'gastoncounty-style', get_stylesheet_uri() );
-	wp_enqueue_style( 'gastoncounty-main', get_template_directory_uri() . '/css/main.css',false,'1.0','all');
+function pds_scripts() {
+	//wp_enqueue_style( 'pds-fluidbox', get_template_directory_uri() . '/css/fluidbox.min.css',false,'1.0','all');
+	wp_enqueue_style( 'pds-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'pds-global', get_template_directory_uri() . '/css/global.css',false,'1.0','all');
 
 	if (!is_admin())   
     {  
@@ -137,21 +137,20 @@ function gastoncounty_scripts() {
   
         // Load a copy of jQuery from the CDN  
         // The last parameter set to TRUE states that it should be loaded in the footer.  
-        wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js', false, '3.1.0', true);  
+        wp_register_script('jquery', get_template_directory_uri() . '/js/jquery.min.js', false, '3.1.1', true);  
   
         wp_enqueue_script('jquery');  
     }
     
-	wp_enqueue_script( 'gastoncounty-throttle-debounce-js', get_template_directory_uri() . '/js/jquery.ba-throttle-debounce.min.js', array( 'jquery' ), '1.1', true );
-	wp_enqueue_script( 'gastoncounty-fluidbox-js', get_template_directory_uri() . '/js/jquery.fluidbox.min.js', array( 'jquery' ), '1.0', true );
-	wp_enqueue_script( 'gastoncounty-stickykit-js', get_template_directory_uri() . '/js/jquery.sticky-kit.min.js', array( 'jquery' ), '1.1.2', true );
-	wp_enqueue_script( 'gastoncounty-app-js', get_template_directory_uri() . '/js/app.js', array( 'jquery' ), '1.0', true );
+	wp_enqueue_script( 'pds-sticky-kit-js', get_template_directory_uri() . '/js/jquery.sticky-kit.min.js', array( 'jquery' ), '1.1.2', true );
+	//wp_enqueue_script( 'pds-fluidbox-js', get_template_directory_uri() . '/js/jquery.fluidbox.min.js', array( 'jquery' ), '1.0', true );
+	wp_enqueue_script( 'pds-app-js', get_template_directory_uri() . '/js/app.js', array( 'jquery' ), '1.0', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'gastoncounty_scripts' );
+add_action( 'wp_enqueue_scripts', 'pds_scripts' );
 
 /**
  * Custom template tags for this theme.

@@ -4,30 +4,30 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Gaston_County_Theme
+ * @package PDS_Theme
  */
 
 ?>
 
 <section class="no-results not-found">
 	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'gastoncounty' ); ?></h1>
+		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'pds' ); ?></h1>
 	</header>
 	<div class="page-content">
 		<?php
 		if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 
-			<p><?php printf( wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'gastoncounty' ), array( 'a' => array( 'href' => array() ) ) ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
+			<p><?php printf( wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'pds' ), array( 'a' => array( 'href' => array() ) ) ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
 
 		<?php elseif ( is_search() ) : ?>
 
-			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'gastoncounty' ); ?></p>
+			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'pds' ); ?></p>
 			<?php
 				get_search_form();
 
 		else : ?>
 
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'gastoncounty' ); ?></p>
+			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'pds' ); ?></p>
 			<?php
 				get_search_form();
 

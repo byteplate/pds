@@ -1,194 +1,77 @@
 $(document).ready(function() {
-  ////////////////////////////////////
-  //
-  //Slide out menu - Close with X icon
-  //
-  ////////////////////////////////////
-  var menuToggle = $('.menu-toggle'),
-      slideMenu = $('.slide-out-menu'),
-      menuClose = $('.menu-close'),
-      overlay = $('.popup-overlay');
 
-
-  menuToggle.on('click', function() {
-    slideMenu.toggleClass('slide-out-menu--active');
-    overlay.addClass('popup-overlay--active');
+  // Sub menu pop up on the main page navigation.
+  $('.has-sub-nav > a').on('click', function(event) {
+    event.stopPropagation();
+    $('.sub-nav').removeClass('sub-nav--active');
+    $(this).parent().find('.sub-nav').toggleClass('sub-nav--active');
   });
 
-  menuClose.on('click', function() {
-    slideMenu.toggleClass('slide-out-menu--active');
-    overlay.toggleClass('popup-overlay--active');
+  // Clicking anywhere in the document to hide the
+  // sub menu popup.
+  $('html').click(function() {
+    $('ul.sub-nav').removeClass('sub-nav--active');
+    $('.sr__flyover').removeClass('sr__flyover--active');
+    $('.pt__flyover').removeClass('pt__flyover--active');
   });
 
 
-  ////////////////////////////////////
-  //
-  //Slide out Login - Close with X icon
-  //
-  ////////////////////////////////////
-
-  var loginToggle = $('.login-toggle'),
-      showLogin = $('.slide-down-login'),
-      loginClose = $('.login-close'),
-      navLoginToggle = $('#nav-login-btn'),
-      navContactToggle = $('#nav-contact-btn'),
-      contactForm = $('.contact-form'),
-      contactToggle = $('.contact-toggle'),
-      contactClose = $('.contact-form__close');
-
-  loginToggle.on('click', function() {
-    showLogin.toggleClass('slide-down-login--active');
-    overlay.addClass('popup-overlay--active');
+  // Toggle classes to hide/show the flyover on the homepage
+  // hero as well as the different product types.
+  $('.hero').on('mouseenter', function(event) {
+    event.stopPropagation();
+    $('.sr__flyover').removeClass('sr__flyover--active');
+    $('ul.sub-nav').removeClass('sub-nav--active');
+    $(this).find('.sr__flyover').toggleClass('sr__flyover--active');
   });
 
-  loginClose.on('click', function() {
-    showLogin.toggleClass('slide-down-login--active');
-    overlay.removeClass('popup-overlay--active');
-  });
-    
-
-  navLoginToggle.on('click', function() {
-    slideMenu.toggleClass('slide-out-menu--active');
-    overlay.toggleClass('popup-overlay--active');
-    showLogin.toggleClass('slide-down-login--active');
-    overlay.addClass('popup-overlay--active');
-  });
-
-  navContactToggle.on('click', function() {
-    slideMenu.toggleClass('slide-out-menu--active');
-    overlay.toggleClass('popup-overlay--active');
-    contactForm.toggleClass('contact-form--active');
-    overlay.addClass('popup-overlay--active');
-  })
-
-  contactToggle.on('click', function () {
-    contactForm.toggleClass('contact-form--active');
-    overlay.addClass('popup-overlay--active');
-  });
-
-  contactClose.on('click', function() {
-    contactForm.toggleClass('contact-form--active');
-    overlay.removeClass('popup-overlay--active');
-  });
-
-  overlay.on('click', function () {
-    $(this).removeClass('popup-overlay--active');
-    slideMenu.removeClass('slide-out-menu--active');
-    showLogin.removeClass('slide-down-login--active');
-    contactForm.removeClass('contact-form--active');
+  $('.product-types > .product-type').on('click', function(event) {
+    event.stopPropagation();
+    $('.pt__flyover').removeClass('pt__flyover--active');
+    $('ul.sub-nav').removeClass('sub-nav--active');
+    $(this).find('.pt__flyover').toggleClass('pt__flyover--active');
   });
 
 
-  ////////////////////////////////////
-  //
-  //Accordion on slide out navigation
-  //
-  ////////////////////////////////////
-  $('.sub-nav:not(:first)').hide();
+  /* Jump to Spindle section in the product gallery. */
 
-  $('.nav-item > a').click(function() {
-
-      $('.sub-nav').slideUp('normal');
-      $(this).next('.sub-nav').slideDown('normal');
-
-    });
-
-  ////////////////////////////////////
-  //
-  //Sidebar Accordion
-  //
-  ////////////////////////////////////
-
-  var panels = $('.accordion').hide();
-
-  panels.first().show();
-
-  $('.accordion-header').click(function() {
-
-      $('.accordion').slideUp('normal');
-      $(this).next('.accordion').slideDown('normal').addClass('accordion--active');
-
+  $('#p-gallery').change( function () {
+    var targetPosition = $($(this).val()).offset().top;
+    $('html,body').animate({ scrollTop: targetPosition}, 'slow');
   });
 
 
+  /*
+  Mobile Navigation Slide-out
+  */
 
-  ////////////////////////////////////
-  //
-  //Featured Tabs
-  //
-  ////////////////////////////////////
-  $('.featured__tab').click(function() {
+  $('.mobile-nav__burger').on('click', function () {
+    $('.overlay').fadeToggle('overlay--active');
+    $('.mobile-nav').toggleClass('mobile-nav--active');
+  });
 
-    var tab_id = $(this).attr('data-tab');
+  $('.mobile-nav__close-btn i').on('click', function () {
+    $('.overlay').fadeToggle('overlay--active');
+    $('.mobile-nav').toggleClass('mobile-nav--active');
+  });
 
-    $('.featured__tab').removeClass('featured__tab--active');
-    $('.featured__content--active').removeClass('featured__content--active');
-
-    $(this).addClass('featured__tab--active');
-    $("#"+tab_id).addClass('featured__content--active');
-
+  // Click on overlay to hide any menus or popups
+  $('.overlay').on('click', function () {
+    $('.overlay').fadeToggle('overlay--active');
+    $('.mobile-nav').toggleClass('mobile-nav--active');
   });
 
 
-  ////////////////////////////////////
-  //
-  //Search Box Toggle
-  //
-  ////////////////////////////////////
+  /*
+  Fixed sidebar on scroll
 
-  $('#search-button').click(function() {
+  Sticks to the top of the page and then removes
+  the fixed class when it hits the footer.
 
-    var searchBox = $('.slide-down-search');
+  Uses Sticky Kit plugin from http://leafo.net/sticky-kit/
+  */
 
-    $('#search-button').toggleClass('fa-times');
-
-    searchBox.fadeToggle(200);
-
-  });
-
-
-
-  ////////////////////////////////////
-  //
-  //Additional Site Download Toggle
-  //
-  ////////////////////////////////////
-
-  var siteDownloads = $('.site-downloads__btn'),
-      toggleList = $('.site-downloads__toggles'),
-      siteDownloadsClose = $('.site-downloads__btn span.fa-caret-down');
-
-  siteDownloads.click(function () {
-    toggleList.slideToggle(200);
-    siteDownloadsClose.toggleClass('fa-times fa-caret-down');
-
-  });
-
-
-
-  ////////////////////////////////////
-  //
-  //Lightbox Controls
-  //
-  ////////////////////////////////////
-
-  $(function () {
-    $('a.lb_img').fluidbox();
-  });
-
-
-
-  ////////////////////////////////////
-  //
-  //Sticky Kit
-  //
-  ////////////////////////////////////
-
-  $(".make-sticky").stick_in_parent({
-      offset_top:20,
-      parent: ".sticky-parent", // note: we must now manually provide the parent
-      //spacer: ".sticky-spacer",
-    });
-  //$(document.body).trigger("sticky_kit:recalc");
+  $('.sidebar').stick_in_parent();
 
 });
+

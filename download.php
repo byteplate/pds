@@ -40,7 +40,7 @@ $file_names = $filter['items'] ;
 $archive_file_name='gaston_county_download.zip';
 //Download Files path
 $file_path= getcwd();
-$file_path = str_replace('/wp-content/themes/gastoncounty', '', $file_path);
+$file_path = str_replace('/wp-content/themes/pds', '', $file_path);
 //cal the function
 zipFilesAndDownload($file_names,$archive_file_name,$file_path);
 } else {

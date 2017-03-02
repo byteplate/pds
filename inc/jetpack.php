@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.me/
  *
- * @package Gaston_County_Theme
+ * @package PDS_Theme
  */
 
 /**
@@ -13,11 +13,11 @@
  * See: https://jetpack.me/support/infinite-scroll/
  * See: https://jetpack.me/support/responsive-videos/
  */
-function gastoncounty_jetpack_setup() {
+function pds_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'main',
-		'render'    => 'gastoncounty_infinite_scroll_render',
+		'render'    => 'pds_infinite_scroll_render',
 		'footer'    => 'page',
 	) );
 
@@ -28,12 +28,12 @@ function gastoncounty_jetpack_setup() {
 	add_theme_support( 'jetpack-social-menu' );
 
 }
-add_action( 'after_setup_theme', 'gastoncounty_jetpack_setup' );
+add_action( 'after_setup_theme', 'pds_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.
  */
-function gastoncounty_infinite_scroll_render() {
+function pds_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :
@@ -44,7 +44,7 @@ function gastoncounty_infinite_scroll_render() {
 	}
 }
 
-function gastoncounty_social_menu() {
+function pds_social_menu() {
 	if ( ! function_exists( 'jetpack_social_menu' ) ) {
 		return;
 	} else {

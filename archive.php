@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Gaston_County_Theme
+ * @package PDS_Theme
  */
 
 get_header(); ?>
@@ -62,7 +62,7 @@ get_header(); ?>
       	<?php while ( have_posts() ) : the_post(); ?>
         <div class="event">
         	<a href="<?php the_permalink(); ?>"><div class="event__img"><?php if ( has_post_thumbnail() ):
-				the_post_thumbnail( 'gastoncounty-featured-image' );
+				the_post_thumbnail( 'pds-featured-image' );
 			else: ?>
 				<div style="height:40px;"></div>
 			<?php endif; ?><span class="event__date"><?php echo get_the_date( 'm/j' ); ?></span></div></a>
@@ -74,8 +74,8 @@ get_header(); ?>
       <div class="inner">
       	<?php the_posts_pagination( array(
 		    'mid_size' => 3,
-		    'prev_text' => __( '&laquo;', 'gastoncounty' ),
-		    'next_text' => __( '&raquo;', 'gastoncounty' ),
+		    'prev_text' => __( '&laquo;', 'pds' ),
+		    'next_text' => __( '&raquo;', 'pds' ),
 		) ); ?>
         <!--<ul class="news-categories__pagination">
           <li><a href="#0">&laquo;</a></li>

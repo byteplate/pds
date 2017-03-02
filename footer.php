@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Gaston_County_Theme
+ * @package PDS_Theme
  */
 
 ?>

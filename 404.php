@@ -4,17 +4,17 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package Gaston_County_Theme
+ * @package PDS_Theme
  */
 
 get_header(); ?>
 
 	<section class="sub-page__heading">
-      <h1><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'gastoncounty' ); ?></h1>
+      <h1><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'pds' ); ?></h1>
     </section>
     <section class="page__summary">
       <div class="inner">
-      	<p style="text-align:center;"><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try another search?', 'gastoncounty' ); ?></p>
+      	<p style="text-align:center;"><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try another search?', 'pds' ); ?></p>
       </div>
     </section>
     <section class="page__details">

@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Gaston_County_Theme
+ * @package PDS_Theme
  */
 
 ?>
@@ -13,7 +13,7 @@
 	<?php if ( '' != get_the_post_thumbnail() ) : ?>
 		<div class="post-thumbnail">
 			<a href="<?php the_permalink(); ?>">
-				<?php the_post_thumbnail( 'gastoncounty-featured-image' ); ?>
+				<?php the_post_thumbnail( 'pds-featured-image' ); ?>
 			</a>
 		</div>
 	<?php endif; ?>
@@ -35,12 +35,12 @@
 		<?php
 			the_content( sprintf(
 				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'gastoncounty' ), array( 'span' => array( 'class' => array() ) ) ),
+				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'pds' ), array( 'span' => array( 'class' => array() ) ) ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			) );
 
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'gastoncounty' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'pds' ),
 				'after'  => '</div>',
 			) );
 		?>

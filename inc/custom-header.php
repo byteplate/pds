@@ -11,33 +11,33 @@
 	</a>
 	<?php endif; // End header image check. ?>
  *
- * @package Gaston_County_Theme
+ * @package PDS_Theme
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses gastoncounty_header_style()
+ * @uses pds_header_style()
  */
-function gastoncounty_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'gastoncounty_custom_header_args', array(
+function pds_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'pds_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 2000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'gastoncounty_header_style',
+		'wp-head-callback'       => 'pds_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'gastoncounty_custom_header_setup' );
+add_action( 'after_setup_theme', 'pds_custom_header_setup' );
 
-if ( ! function_exists( 'gastoncounty_header_style' ) ) :
+if ( ! function_exists( 'pds_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog
  *
- * @see gastoncounty_custom_header_setup().
+ * @see pds_custom_header_setup().
  */
-function gastoncounty_header_style() {
+function pds_header_style() {
 	$header_text_color = get_header_textcolor();
 
 	// If no custom options for text are set, let's bail
@@ -70,4 +70,4 @@ function gastoncounty_header_style() {
 	</style>
 	<?php
 }
-endif; // gastoncounty_header_style
+endif; // pds_header_style

@@ -2,7 +2,7 @@
 /**
  * Gaston County Theme Theme Customizer.
  *
- * @package Gaston_County_Theme
+ * @package PDS_Theme
  */
 
 /**
@@ -10,17 +10,17 @@
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-function gastoncounty_customize_register( $wp_customize ) {
+function pds_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 }
-add_action( 'customize_register', 'gastoncounty_customize_register' );
+add_action( 'customize_register', 'pds_customize_register' );
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
-function gastoncounty_customize_preview_js() {
-	wp_enqueue_script( 'gastoncounty_customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), '20151215', true );
+function pds_customize_preview_js() {
+	wp_enqueue_script( 'pds_customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
-add_action( 'customize_preview_init', 'gastoncounty_customize_preview_js' );
+add_action( 'customize_preview_init', 'pds_customize_preview_js' );

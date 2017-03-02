@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package Gaston_County_Theme
+ * @package PDS_Theme
  */
 
 get_header(); ?>
@@ -22,7 +22,7 @@ get_header(); ?>
         <?php if ( '' != get_the_post_thumbnail() ) : ?>
 			<div class="post__media">
 				<a href="<?php the_permalink(); ?>">
-					<?php the_post_thumbnail( 'gastoncounty-featured-image', array( 'class' => 'img-r' ) ); ?>
+					<?php the_post_thumbnail( 'pds-featured-image', array( 'class' => 'img-r' ) ); ?>
 				</a>
 			</div>
 		<?php endif; ?>
